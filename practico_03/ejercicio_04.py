@@ -17,6 +17,13 @@ class Perro(Animal):
     sobrecargar el método descripción para que devuelva:
     "Soy un perro y" + método descripción del padre
     """
+    def __init__(self, edad: int = 0 ,raza: str = "") -> None:
+        super().__init__(edad)
+        self.raza = raza
+    
+
+    def descripcion(self):
+        return f"Soy un perro y {super().descripcion().lower()}"
     # Completar
 
 
@@ -39,11 +46,19 @@ from dataclasses import dataclass
 
 @dataclass
 class Animal:
+    edad: int = 0
+
+    def descripcion(self) -> str:
+        return f"Tengo {self.edad} años"
     pass # Completar
 
 
 @dataclass
 class Perro(Animal):
+    raza: str = ""
+
+    def descripcion(self) -> str:
+        return f"Soy un perro y {super().descripcion().lower()}" 
     pass # Completar
 
 
