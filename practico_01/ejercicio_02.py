@@ -1,7 +1,7 @@
 """Comparaciones Encadenadas, Cantidad Arbitraria de Parámetros, Recursividad."""
 
 
-def maximo_encadenado(a: float, b: float, c: float) -> float:
+def maximo_encadenado(a: float, b: float, c: float) -> float: # type: ignore
     if a > b and a > c:
         return a
     if b > a and b > c:

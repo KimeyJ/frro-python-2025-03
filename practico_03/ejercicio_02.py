@@ -2,15 +2,18 @@
 
 
 class Articulo:
-    """Clase con "nombre" como variable de instancia y un id incremental
-    generado automáticamente.
+    id = int,
+    nombre = ""
 
-    Restricciones:
-        - Utilizar sólamente el constructor (__init__) y un método de
-          clase (@classmethod) con una variable de clase
-    """
+    _last_id = 0
+    def __init__(self, nombre=""):
+        self.id_ = Articulo._last_id + 1
+        Articulo._last_id = self.id_
+        self.nombre = nombre
+    @classmethod
+    def _get_last_id(cls):
+        return cls._last_id
 
-    # Completar
 
 
 # NO MODIFICAR - INICIO
