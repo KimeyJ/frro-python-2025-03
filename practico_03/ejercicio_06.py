@@ -6,13 +6,21 @@ from typing import List
 
 # NO MODIFICAR - INICIO
 class Article:
-    """Agregar los métodos que sean necesarios para que los test funcionen.
-    Hint: los métodos necesarios son todos magic methods
-    Referencia: https://docs.python.org/3/reference/datamodel.html#basic-customization
-    """
 
     def __init__(self, name: str) -> None:
         self.name = name
+    
+    def __eq__(self, other: Article) -> bool:
+        return self.name == other.name
+
+    def __repr__(self) -> str:
+        return f"Article('{self.name}')"
+    
+    def __str__(self) -> str:
+        return self.name
+
+    def __hash__(self) -> int:
+        return hash(self.name)    
 
     # NO MODIFICAR - FIN
 
@@ -21,16 +29,24 @@ class Article:
 
 # NO MODIFICAR - INICIO
 class ShoppingCart:
-    """Agregar los métodos que sean necesarios para que los test funcionen.
-    Hint: los métodos necesarios son todos magic methods
-    Referencia: https://docs.python.org/3/reference/datamodel.html#basic-customization
-    """
 
     def __init__(self, articles: List[Article] = None) -> None:
         if articles is None:
             self.articles = []
         else:
             self.articles = articles
+    
+    def __eq__(self, other: ShoppingCart) -> bool:
+        return set(self.articles) == set(other.articles)
+    
+    def __str__(self) -> str:
+        return str([str(i) for i in self.articles])
+    
+    def __repr__(self) -> str:
+        return f"ShoppingCart({self.articles})"
+    
+    def __add__(self, other:ShoppingCart) -> ShoppingCart:
+        return ShoppingCart(self.articles + other.articles)
 
     def add(self, article: Article) -> ShoppingCart:
         self.articles.append(article)
